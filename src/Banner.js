@@ -21,6 +21,10 @@ function Banner() {
 
     console.log(movie.backdrop_path)
 
+    function truncate(str, n) {
+        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    }
+
     return (
         <header className='banner' style={{
             backgroundSize: "cover",
@@ -33,14 +37,16 @@ function Banner() {
                     {movie?.title || movie?.name || movie?.original_name}
                 </h1>
                 <div className='banner--buttons'>
-                    <button className='banner-btn'>Play</button>
-                    <button className='banner-btn'>My List</button>
+                    <button className='banner--btn'>Play</button>
+                    <button className='banner--btn'>My List</button>
                 </div>
 
                 <h1 className='banner--desc'>
-                    {movie?.overview}
+                    {truncate(movie?.overview, 150)}
                 </h1>
             </div>
+
+            <div className='banner--fadeBottom' />
         </header>
     )
 }
