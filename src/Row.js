@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "./axios"
 import "./Row.css"
 import YouTube from "react-youtube";
-const movieTrailer = require('movie-trailer')
 
 function Row({ title, fetchUrl, isLargeRow }) {
     const [movies, setMovies] = useState([])
-    const [trailerUrl, setTrailerUrl] = useState("")
+    const [trailerUrl] = useState("")
     const base_url = "https://image.tmdb.org/t/p/original/"
 
     useEffect(() => {
@@ -28,19 +27,19 @@ function Row({ title, fetchUrl, isLargeRow }) {
         },
     }
 
-    const handleClick = (movie) => {
-        if (trailerUrl) {
-            setTrailerUrl("")
-        } else {
-            movieTrailer(movie.name || "")
-            .then(url => {
-                console.log(url)
-                const urlParams = new URLSearchParams(new URL(url).search)
-                setTrailerUrl(urlParams.get('v'))
+    // const handleClick = (movie) => {
+    //     if (trailerUrl) {
+    //         setTrailerUrl("")
+    //     } else {
+    //         movieTrailer(movie.name || "")
+    //         .then(url => {
+    //             console.log(url)
+    //             const urlParams = new URLSearchParams(new URL(url).search)
+    //             setTrailerUrl(urlParams.get('v'))
 
-            }).catch((error) => console.log(error))
-        }
-    }
+    //         }).catch((error) => console.log(error))
+    //     }
+    // }
 
     return (
         <div className="row">
