@@ -1,8 +1,8 @@
 import './App.css';
-import Row from './Row';
-import Banner from './Banner';
+import Row from './components/Row/Row';
+import Banner from './components/Banner/Banner';
 import requests from './requests';
-import Nav from './Nav'
+import Nav from './components/Nav/Nav'
 
 function App() {
   return (
